@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:complexType name="modInfo">
+   <xs:sequence>
+   		<xs:element name="module" type="xs:string" minOccurs="0"/>
+		<xs:element name="presence" type="xs:string" minOccurs="0"/>
+		<xs:element name="pwrState" type="xs:string" minOccurs="0"/>
+		<xs:element name="health" type="xs:string" minOccurs="0"/>
+		<xs:element name="svcTag" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="ioInfo">
+   <xs:sequence>
+   		<xs:element name="IO" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="Name" type="xs:string" minOccurs="0"/>
+		<xs:element name="Type" type="xs:string" minOccurs="0"/>
+		<xs:element name="Presence" type="xs:string" minOccurs="0"/>
+		<xs:element name="POST" type="xs:string" minOccurs="0"/>
+		<xs:element name="Power" type="xs:string" minOccurs="0"/>
+		<xs:element name="Role" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="ioInfoStack">
+   <xs:sequence>
+   		<xs:element name="Chassis" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="IO" type="xs:string" minOccurs="0"/>
+		<xs:element name="Slot" type="xs:string" minOccurs="0"/>
+		<xs:element name="Presence" type="xs:string" minOccurs="0"/>
+		<xs:element name="Role" type="xs:string" minOccurs="0"/>
+		<xs:element name="Unit" type="xs:string" minOccurs="0"/>
+		<xs:element name="Stack_ID" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="switchVersionSummary">
+   <xs:sequence>
+   		<xs:element name="Switch" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="Model_Name" type="xs:string" minOccurs="0"/>
+		<xs:element name="HW_Version" type="xs:string" minOccurs="0"/>
+		<xs:element name="FW_Version" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="serverVersionSummary">
+   <xs:sequence>
+   		<xs:element name="Server" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="iDRAC_Version" type="xs:string" minOccurs="0"/>
+		<xs:element name="Blade_Type" type="xs:string" minOccurs="0"/>
+		<xs:element name="Gen" type="xs:string" minOccurs="0"/>
+		<xs:element name="Updatable" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="cMCVersionSummary">
+   <xs:sequence>
+   		<xs:element name="CMC" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="CMC_Version" type="xs:string" minOccurs="0"/>
+		<xs:element name="Updatable" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="switchNicCfg">
+   <xs:sequence>
+   		<xs:element name="DHCP_Enabled" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="IP_Address" type="xs:string" minOccurs="0"/>
+		<xs:element name="Subnet_Mask" type="xs:string" minOccurs="0"/>
+		<xs:element name="Gateway" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="serverNicCfg">
+   <xs:sequence>
+   		<xs:element name="LOM_Model_Name" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="LOM_Fabric_Type" type="xs:string" minOccurs="0"/>
+		<xs:element name="IPv4_Enabled" type="xs:string" minOccurs="0"/>
+		<xs:element name="DHCP_Enabled" type="xs:string" minOccurs="0"/>
+		<xs:element name="IP_Address" type="xs:string" minOccurs="0"/>
+		<xs:element name="Subnet_Mask" type="xs:string" minOccurs="0"/>
+		<xs:element name="Gateway" type="xs:string" minOccurs="0"/>
+		<xs:element name="IPv6_Enabled" type="xs:string" minOccurs="0"/>
+		<xs:element name="Autoconfiguration_Enabled" type="xs:string" minOccurs="0"/>
+		<xs:element name="Link_local_Address" type="xs:string" minOccurs="0"/>
+		<xs:element name="IPv6_Gateway" type="xs:string" minOccurs="0"/>
+		<xs:element name="VLAN_Enable" type="xs:string" minOccurs="0"/>
+		<xs:element name="VLAN_ID" type="xs:string" minOccurs="0"/>
+		<xs:element name="VLAN_priority" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="chassisNicCfg">
+   <xs:sequence>
+   		<xs:element name="NIC_Enabled" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="IPv4_Enabled" type="xs:string" minOccurs="0"/>
+		<xs:element name="DHCP_Enabled" type="xs:string" minOccurs="0"/>
+		<xs:element name="Static_IP_Address" type="xs:string" minOccurs="0"/>
+		<xs:element name="Static_Subnet_Mask" type="xs:string" minOccurs="0"/>
+		<xs:element name="Static_Gateway" type="xs:string" minOccurs="0"/>
+		<xs:element name="Current_IP_Address" type="xs:string" minOccurs="0"/>
+		<xs:element name="Current_Subnet_Mask" type="xs:string" minOccurs="0"/>
+		<xs:element name="Current_Gateway" type="xs:string" minOccurs="0"/>
+		<xs:element name="IPv6_Enabled" type="xs:string" minOccurs="0"/>
+		<xs:element name="Autoconfiguration_Enabled" type="xs:string" minOccurs="0"/>
+		<xs:element name="Static_IPv6_Address" type="xs:string" minOccurs="0"/>
+		<xs:element name="Static_IPv6_Gateway" type="xs:string" minOccurs="0"/>
+		<xs:element name="Link_Local_Address" type="xs:string" minOccurs="0"/>
+		<xs:element name="Current_IPv6_Address_1" type="xs:string" minOccurs="0"/>
+		<xs:element name="Current_IPv6_Gateway" type="xs:string" minOccurs="0"/>
+		<xs:element name="Speed" type="xs:string" minOccurs="0"/>
+		<xs:element name="Duplex" type="xs:string" minOccurs="0"/>
+		<xs:element name="VLAN_Enable" type="xs:string" minOccurs="0"/>
+		<xs:element name="VLAN_ID" type="xs:string" minOccurs="0"/>
+		<xs:element name="VLAN_priority" type="xs:string" minOccurs="0"/>
+		<xs:element name="Redundant_mode" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  
+  <!-- racadm getsysinfo -->
+  <xs:complexType name="cMCInfo">
+   <xs:sequence>
+   		<xs:element name="CMC_Date_Time" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="Primary_CMC_Location" type="xs:string" minOccurs="0"/>
+		<xs:element name="Primary_CMC_Version" type="xs:string" minOccurs="0"/>
+		<xs:element name="Standby_CMC_Version" type="xs:string" minOccurs="0"/>
+		<xs:element name="Last_Firmware_Update" type="xs:string" minOccurs="0"/>
+		<xs:element name="Hardware_Version" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="cMCNetworkInfo">
+   <xs:sequence>
+   		<xs:element name="NIC_Enabled" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="MAC_Address" type="xs:string" minOccurs="0"/>
+		<xs:element name="Register_DNS_CMC_Name" type="xs:string" minOccurs="0"/>
+		<xs:element name="DNS_CMC_Name" type="xs:string" minOccurs="0"/>
+		<xs:element name="Current_DNS_Domain" type="xs:string" minOccurs="0"/>
+		<xs:element name="VLAN_ID" type="xs:string" minOccurs="0"/>
+		<xs:element name="VLAN_Priority" type="xs:string" minOccurs="0"/>
+		<xs:element name="VLAN_Enabled" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="cMCIPv4Info">
+   <xs:sequence>
+   		<xs:element name="IPv4_Enabled" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="Current_IP_Address" type="xs:string" minOccurs="0"/>
+		<xs:element name="Current_IP_Gateway" type="xs:string" minOccurs="0"/>
+		<xs:element name="Current_IP_Netmask" type="xs:string" minOccurs="0"/>
+		<xs:element name="DHCP_Enabled" type="xs:string" minOccurs="0"/>
+		<xs:element name="Current_DNS_Server_1" type="xs:string" minOccurs="0"/>
+		<xs:element name="Current_DNS_Server_2" type="xs:string" minOccurs="0"/>
+		<xs:element name="DNS_Servers_from_DHCP" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="cMCIPv6Info">
+   <xs:sequence>
+   		<xs:element name="IPv6_Enabled" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="Autoconfiguration_Enabled" type="xs:string" minOccurs="0"/>
+		<xs:element name="Link_Local_Address" type="xs:string" minOccurs="0"/>
+		<xs:element name="Current_IPv6_Address_1" type="xs:string" minOccurs="0"/>
+		<xs:element name="Current_IPv6_Gateway" type="xs:string" minOccurs="0"/>
+		<xs:element name="Current_IPv6_DNS_Server_1" type="xs:string" minOccurs="0"/>
+		<xs:element name="Current_IPv6_DNS_Server_2" type="xs:string" minOccurs="0"/>
+		<xs:element name="DNS_Servers_from_DHCPv6" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="chassisInfo">
+   <xs:sequence>
+   		<xs:element name="System_Model" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="System_AssetTag" type="xs:string" minOccurs="0"/>
+		<xs:element name="Service_Tag" type="xs:string" minOccurs="0"/>
+		<xs:element name="Express_Service_Code" type="xs:string" minOccurs="0"/>
+		<xs:element name="Chassis_Name" type="xs:string" minOccurs="0"/>
+		<xs:element name="Chassis_Location" type="xs:string" minOccurs="0"/>
+		<xs:element name="Chassis_Midplane_Version" type="xs:string" minOccurs="0"/>
+		<xs:element name="Power_Status" type="xs:string" minOccurs="0"/>
+		<xs:element name="System_ID" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  <!-- getpcieinfo -a -->
+  <xs:complexType name="pcieSlotAssignment">
+   <xs:sequence>
+   		<xs:element name="PCIe_Slot" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="Name" type="xs:string" minOccurs="0"/>
+		<xs:element name="Power_State" type="xs:string" minOccurs="0"/>
+		<xs:element name="Server_Slot_Name" type="xs:string" minOccurs="0"/>
+		<xs:element name="Server_Slot" type="xs:string" minOccurs="0"/><xs:element name="Server_Presence" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  <!-- getpcieinfo -->
+  <xs:complexType name="pcieSlotFQDD">
+   <xs:sequence>
+   		<xs:element name="PCIe_Slot" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="Virtual_Adapter" type="xs:string" minOccurs="0"/>
+		<xs:element name="FQDD" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- getpcieinfo -c fqdd -->
+  <xs:complexType name="pcieSlot">
+   <xs:sequence>
+        <xs:element name="FQDD" type="xs:string" minOccurs="0"/>
+   		<xs:element name="PCIe_Slot" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="Adapter_presence_status" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="Adapter_presence" type="xs:string" minOccurs="0"/>
+		<xs:element name="Assignment_status" type="xs:string" minOccurs="0"/>
+		<xs:element name="Name" type="xs:string" minOccurs="0"/>
+		<xs:element name="Power_Status" type="xs:string" minOccurs="0"/>
+		<xs:element name="Allocated_Slot_Power" type="xs:string" minOccurs="0"/>
+		<xs:element name="Required_Adapter_Power" type="xs:string" minOccurs="0"/>
+		<xs:element name="Server_Mapping" type="xs:string" minOccurs="0"/>
+		<xs:element name="Server_Slot" type="xs:string" minOccurs="0"/>
+		<xs:element name="Slot_Type" type="xs:string" minOccurs="0"/>
+		<xs:element name="Server_Presence" type="xs:string" minOccurs="0"/>
+		<xs:element name="PCI_Device_ID" type="xs:string" minOccurs="0"/>
+		<xs:element name="PCI_Vendor_ID" type="xs:string" minOccurs="0"/>
+		<xs:element name="Fabric" type="xs:string" minOccurs="0"/>
+		<xs:element name="Card_Module" type="xs:string" minOccurs="0"/>
+		<xs:element name="Card_Module_Type" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  
+  <!-- getpbinfo power budget status -->
+    <xs:complexType name="powerBudgetStatus">
+   <xs:sequence>
+        <xs:element name="System_Input_Power" type="xs:string" minOccurs="0"/>
+   		<xs:element name="Peak_System_Power" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="Peak_System_Power_Timestamp" type="xs:string" minOccurs="0"/>
+		<xs:element name="Minimum_System_Power" type="xs:string" minOccurs="0"/>
+		<xs:element name="Minimum_System_Power_Timestamp" type="xs:string" minOccurs="0"/>
+		<xs:element name="Overall_Power_Health" type="xs:string" minOccurs="0"/>
+		<xs:element name="Redundancy" type="xs:string" minOccurs="0"/>
+		<xs:element name="System_Input_Power_Cap" type="xs:string" minOccurs="0"/>
+		<xs:element name="Redundancy_Policy" type="xs:string" minOccurs="0"/>
+		<xs:element name="Dynamic_PSU_Engagement_Enabled" type="xs:string" minOccurs="0"/>
+		<xs:element name="System_Input_Max_Power_Capacity" type="xs:string" minOccurs="0"/>
+		<xs:element name="Input_Redundancy_Reserve" type="xs:string" minOccurs="0"/>
+		<xs:element name="Input_Power_Allocated_to_Servers" type="xs:string" minOccurs="0"/>
+		<xs:element name="Input_Power_Allocated_to_Chassis_Infrastructure" type="xs:string" minOccurs="0"/>
+		<xs:element name="Total_Input_Power_Available_for_Allocation" type="xs:string" minOccurs="0"/>
+		<xs:element name="Standby_Input_Power_Capacity" type="xs:string" minOccurs="0"/>
+		<xs:element name="Server_Based_Power_Management_Mode" type="xs:string" minOccurs="0"/>
+		<xs:element name="Max_Power_Conservation_Mode" type="xs:string" minOccurs="0"/>
+		<xs:element name="Server_Performance_Over_Power_Redundancy" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  
+  <!-- getpbinfo chassis -->
+  <xs:complexType name="chassisPowerSupplyStatus">
+   <xs:sequence>
+        <xs:element name="Name" type="xs:string" minOccurs="0"/>
+   		<xs:element name="Presence" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="Power_State" type="xs:string" minOccurs="0"/>
+		<xs:element name="Input_Current" type="xs:string" minOccurs="0"/>
+		<xs:element name="Input_Volts" type="xs:string" minOccurs="0"/>
+		<xs:element name="Output_Rated_Power" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- getpbinfo server -->
+  <xs:complexType name="serverModulePowerAllocation">
+   <xs:sequence>
+        <xs:element name="Slot" type="xs:string" minOccurs="0"/>
+   		<xs:element name="Server_Name" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="Power_State" type="xs:string" minOccurs="0"/>
+		<xs:element name="Allocation" type="xs:string" minOccurs="0"/>
+		<xs:element name="Priority" type="xs:string" minOccurs="0"/>
+		<xs:element name="Blade_Type" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+    <!-- getkvminfo -->
+  <xs:complexType name="kvmInfo">
+   <xs:sequence>
+        <xs:element name="module" type="xs:string" minOccurs="0"/>
+   		<xs:element name="presence" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="model" type="xs:string" minOccurs="0"/>
+		<xs:element name="FW_Version" type="xs:string" minOccurs="0"/>
+		<xs:element name="status" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+    
+    <!-- getconfig -g cfgkvminfo -->
+  <xs:complexType name="cfgKvmInfo">
+   <xs:sequence>
+        <xs:element name="cfgKVMAccessToCMCEnable" type="xs:string" minOccurs="0"/>
+   		<xs:element name="cfgKVMFrontPanelEnable" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+   <!-- getversion SwitchVersion -->   
+  <xs:complexType name="switchVersion">
+   <xs:sequence>
+        <xs:element name="Switch" type="xs:string" minOccurs="0"/>
+   		<xs:element name="Model_Name" type="xs:string" minOccurs="0"/>
+		<xs:element name="HW_Version" type="xs:string" minOccurs="0"/>
+		<xs:element name="FW_Version" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- getversion CmcVersion -->
+  <xs:complexType name="cmcVersion">
+   <xs:sequence>
+        <xs:element name="CMC" type="xs:string" minOccurs="0"/>
+   		<xs:element name="CMC_Version" type="xs:string" minOccurs="0"/>
+		<xs:element name="Updatable" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- getversion ChassisInfrastructureVersion -->
+  <xs:complexType name="chassisInfrastructureVersion">
+   <xs:sequence>
+        <xs:element name="Chassis_Infrastructure" type="xs:string" minOccurs="0"/>
+   		<xs:element name="FW_Version" type="xs:string" minOccurs="0"/>
+		<xs:element name="FQDD" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- getversion StorageControllerVersion -->
+  <xs:complexType name="storageControllerVersion">
+   <xs:sequence>
+        <xs:element name="Storage_Controller" type="xs:string" minOccurs="0"/>
+   		<xs:element name="FW_Version" type="xs:string" minOccurs="0"/>
+		<xs:element name="FQDD" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- getversion StorageEnclosureVersion -->
+  <xs:complexType name="storageEnclosureVersion">
+   <xs:sequence>
+        <xs:element name="Storage_Enclosure" type="xs:string" minOccurs="0"/>
+   		<xs:element name="FW_Version" type="xs:string" minOccurs="0"/>
+		<xs:element name="FQDD" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- getversion PhysicalDiskVersion -->
+  <xs:complexType name="physicalDiskVersion">
+   <xs:sequence>
+        <xs:element name="Physical_Disk" type="xs:string" minOccurs="0"/>
+   		<xs:element name="FW_Version" type="xs:string" minOccurs="0"/>
+		<xs:element name="FQDD" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- Equallogic storage array info (Colossus) -->
+  <xs:complexType name="equallogicArrayConfig">
+   <xs:sequence>
+        <xs:element name="Module_ID" type="xs:string" minOccurs="0"/>
+        <xs:element name="Member_Name" type="xs:string" minOccurs="0"/>
+        <xs:element name="Member_IP" type="xs:string" minOccurs="0"/>
+        <xs:element name="Group_Name" type="xs:string" minOccurs="0"/>
+        <xs:element name="Group_IP" type="xs:string" minOccurs="0"/>   
+        <xs:element name="Fabric_Selection" type="xs:string" minOccurs="0"/> 
+        <xs:element name="Status_Message" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  <!-- raid get controllers RaidController -->
+  <xs:complexType name="raidController">
+   <xs:sequence>
+        <xs:element name="section_identifier" type="xs:string" minOccurs="0"/>
+        <xs:element name="Status" type="xs:string" minOccurs="0"/>
+   		<xs:element name="RollupStatus" type="xs:string" minOccurs="0"/>
+		<xs:element name="Name" type="xs:string" minOccurs="0"/>
+		<xs:element name="FirmwareVersion" type="xs:string" minOccurs="0"/>
+		<xs:element name="DriverVersion" type="xs:string" minOccurs="0"/>
+		<xs:element name="RebuildRate" type="xs:string" minOccurs="0"/>
+		<xs:element name="BgiRate" type="xs:string" minOccurs="0"/>
+		<xs:element name="CheckConsistencyRate" type="xs:string" minOccurs="0"/>
+		<xs:element name="ReconstructRate" type="xs:string" minOccurs="0"/>
+		<xs:element name="PatrolReadRate" type="xs:string" minOccurs="0"/>
+		<xs:element name="PatrolReadMode" type="xs:string" minOccurs="0"/>
+		<xs:element name="PatrolReadState" type="xs:string" minOccurs="0"/>
+		<xs:element name="CheckConsistencyMode" type="xs:string" minOccurs="0"/>
+		<xs:element name="LoadBalanceSetting" type="xs:string" minOccurs="0"/>
+		<xs:element name="CopybackMode" type="xs:string" minOccurs="0"/>
+		<xs:element name="PreservedCache" type="xs:string" minOccurs="0"/>
+		<xs:element name="CacheMemorySize" type="xs:string" minOccurs="0"/>
+		<xs:element name="PersistHotspare" type="xs:string" minOccurs="0"/>
+		<xs:element name="SpindownUnconfiguredDrives" type="xs:string" minOccurs="0"/>
+		<xs:element name="SpindownHotspare" type="xs:string" minOccurs="0"/>
+		<xs:element name="Timeintervalforspindown" type="xs:string" minOccurs="0"/>
+		<xs:element name="SecurityStatus" type="xs:string" minOccurs="0"/>
+		<xs:element name="EncryptionMode" type="xs:string" minOccurs="0"/>
+		<xs:element name="SasAddress" type="xs:string" minOccurs="0"/>
+		<xs:element name="PciDeviceId" type="xs:string" minOccurs="0"/>
+		<xs:element name="PciSubdeviceId" type="xs:string" minOccurs="0"/>
+		<xs:element name="PciVendorId" type="xs:string" minOccurs="0"/>
+		<xs:element name="PciSubvendorId" type="xs:string" minOccurs="0"/>
+		<xs:element name="PciBus" type="xs:string" minOccurs="0"/>
+		<xs:element name="PciDevice" type="xs:string" minOccurs="0"/>
+		<xs:element name="PciFunction" type="xs:string" minOccurs="0"/>
+		<xs:element name="BusWidth" type="xs:string" minOccurs="0"/>
+		<xs:element name="SlotLength" type="xs:string" minOccurs="0"/>
+		<xs:element name="SlotType" type="xs:string" minOccurs="0"/>
+		<xs:element name="CapableSpeeds" type="xs:string" minOccurs="0"/>
+		<xs:element name="LearnMode" type="xs:string" minOccurs="0"/>
+		<xs:element name="HighAvailabilityMode" type="xs:string" minOccurs="0"/>																
+    </xs:sequence>
+  </xs:complexType>
+  
+  
+  <!-- raid get enclosures -o DiskEnclosure -->
+  <xs:complexType name="diskEnclosure">
+   <xs:sequence>
+        <xs:element name="section_identifier" type="xs:string" minOccurs="0"/>
+        <xs:element name="Status" type="xs:string" minOccurs="0"/>
+        <xs:element name="RollupStatus" type="xs:string" minOccurs="0"/>
+        <xs:element name="Name" type="xs:string" minOccurs="0"/>
+        <xs:element name="BayId" type="xs:string" minOccurs="0"/>
+        <xs:element name="FirmwareVersion" type="xs:string" minOccurs="0"/>
+        <xs:element name="SasAddress" type="xs:string" minOccurs="0"/>
+        <xs:element name="SlotCount" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  
+    <!-- raid get pdisks -o PhysicalDisk -->
+  <xs:complexType name="physicalDisk">
+   <xs:sequence>
+        <xs:element name="section_identifier" type="xs:string" minOccurs="0"/>
+        <xs:element name="Status" type="xs:string" minOccurs="0"/>
+        <xs:element name="RollupStatus" type="xs:string" minOccurs="0"/>
+        <xs:element name="Name" type="xs:string" minOccurs="0"/>
+        <xs:element name="State" type="xs:string" minOccurs="0"/>
+        <xs:element name="OperationState" type="xs:string" minOccurs="0"/>
+        <xs:element name="PowerStatus" type="xs:string" minOccurs="0"/>
+        <xs:element name="Size" type="xs:string" minOccurs="0"/>
+        <xs:element name="FailurePredicted" type="xs:string" minOccurs="0"/>
+        <xs:element name="SecurityStatus" type="xs:string" minOccurs="0"/>
+        <xs:element name="BusProtocol" type="xs:string" minOccurs="0"/>
+        <xs:element name="MediaType" type="xs:string" minOccurs="0"/>
+        <xs:element name="UsedRaidDiskSpace" type="xs:string" minOccurs="0"/>
+        <xs:element name="AvailableRaidDiskSpace" type="xs:string" minOccurs="0"/>
+        <xs:element name="Hotspare" type="xs:string" minOccurs="0"/>
+        <xs:element name="Manufacturer" type="xs:string" minOccurs="0"/>
+        <xs:element name="ProductId" type="xs:string" minOccurs="0"/>
+        <xs:element name="Revision" type="xs:string" minOccurs="0"/>
+        <xs:element name="SerialNumber" type="xs:string" minOccurs="0"/>
+        <xs:element name="PartNumber" type="xs:string" minOccurs="0"/>
+        <xs:element name="NegotiatedSpeed" type="xs:string" minOccurs="0"/>
+        <xs:element name="CapableSpeed" type="xs:string" minOccurs="0"/>
+        <xs:element name="ManufacturedDay" type="xs:string" minOccurs="0"/>
+        <xs:element name="ManufacturedWeek" type="xs:string" minOccurs="0"/>
+        <xs:element name="ManufacturedYear" type="xs:string" minOccurs="0"/>
+        <xs:element name="SasAddress" type="xs:string" minOccurs="0"/>
+        <xs:element name="FormFactor" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+    <!-- raid get vdisks -o VirtualDisk -->
+  <xs:complexType name="virtualDisk">
+   <xs:sequence>
+    <xs:element name="section_identifier" type="xs:string" minOccurs="0"/>
+    <xs:element name="Status" type="xs:string" minOccurs="0"/>
+	<xs:element name="Name" type="xs:string" minOccurs="0"/>
+	<xs:element name="RollupStatus" type="xs:string" minOccurs="0"/>
+	<xs:element name="State" type="xs:string" minOccurs="0"/>
+	<xs:element name="OperationalState" type="xs:string" minOccurs="0"/>
+	<xs:element name="Progress" type="xs:string" minOccurs="0"/>
+	<xs:element name="Layout" type="xs:string" minOccurs="0"/>
+	<xs:element name="Size" type="xs:string" minOccurs="0"/>
+	<xs:element name="AvailableProtocols" type="xs:string" minOccurs="0"/>
+	<xs:element name="MediaType" type="xs:string" minOccurs="0"/>
+	<xs:element name="ReadPolicy" type="xs:string" minOccurs="0"/>
+	<xs:element name="WritePolicy" type="xs:string" minOccurs="0"/>
+	<xs:element name="StripeSize" type="xs:string" minOccurs="0"/>
+	<xs:element name="DiskCachePolicy" type="xs:string" minOccurs="0"/>
+	<xs:element name="BadBlocksFound" type="xs:string" minOccurs="0"/>
+	<xs:element name="Secured" type="xs:string" minOccurs="0"/>
+	<xs:element name="RemainingRedundancy" type="xs:string" minOccurs="0"/>
+	<xs:element name="EnhancedCache" type="xs:string" minOccurs="0"/>
+	<xs:element name="VirtualAdapter1AccessPolicy" type="xs:string" minOccurs="0"/>
+	<xs:element name="VirtualAdapter2AccessPolicy" type="xs:string" minOccurs="0"/>
+	<xs:element name="VirtualAdapter3AccessPolicy" type="xs:string" minOccurs="0"/>
+	<xs:element name="VirtualAdapter4AccessPolicy" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+   <!-- getconfig -g cfgtraps -->
+  <xs:complexType name="cfgTraps">
+   <xs:sequence>
+        <xs:element name="cfgTrapsEnable" type="xs:string" minOccurs="0"/>
+   		<xs:element name="cfgTrapsAlertDestIPAddr" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="cfgTrapsCommunityName" type="xs:string" minOccurs="0"/>
+	</xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="MacAddress">
+   <xs:sequence>
+        <xs:element name="Name" type="xs:string" minOccurs="0"/>
+   		<xs:element name="Presence" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="BMC_MAC_Address" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="NIC1_MAC_Address" type="xs:string" minOccurs="0"/>
+   	    <xs:element name="NIC2_MAC_Address" type="xs:string" minOccurs="0"/>
+	</xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MainBoardVersionSummary">
+   <xs:sequence>
+        <xs:element name="Chassis_Infrastructure" type="xs:string" minOccurs="0"/>
+        <xs:element name="FW_Version" type="xs:string" minOccurs="0"/>
+        <xs:element name="FQDD" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="vrtxSensorInfoBase">
+  	<xs:sequence>
+  		<xs:element name="Sensor_Type" type="xs:string" minOccurs="0" />
+  		<xs:element name="Num" type="xs:string" minOccurs="0"/>
+  		<xs:element name="units" type="xs:string" minOccurs="0"/>
+        <xs:element name="LW" type="xs:string" minOccurs="0"/>
+        <xs:element name="LC" type="xs:string" minOccurs="0"/>
+        <xs:element name="UW" type="xs:string" minOccurs="0"/>
+        <xs:element name="UC" type="xs:string" minOccurs="0"/>
+  	</xs:sequence>
+  </xs:complexType>
+  
+  <xs:element name="vrtxSensorInfo">
+	  <xs:complexType>
+		<xs:complexContent>
+			<xs:extension base="vrtxSensorInfoBase">
+				<xs:sequence>
+					 <xs:element name="senType" type="xs:string" minOccurs="0"/>
+				     <xs:element name="Sensor_Units" type="xs:string" minOccurs="0"/>
+				     <xs:element name="Sensor_Name" type="xs:string" minOccurs="0" />
+				     <xs:element name="Status" type="xs:string" minOccurs="0"/>
+				     <xs:element name="Reading" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	  </xs:complexType>
+  </xs:element>
+  
+    <xs:element name="vrtxSensorInfoWithC">
+	  <xs:complexType>
+		<xs:complexContent>
+			<xs:extension base="vrtxSensorInfoBase">
+				<xs:sequence>
+					<xs:element name="sensorName" type="xs:string" minOccurs="0" />
+					<xs:element name="status" type="xs:string" minOccurs="0" />
+					<xs:element name="reading" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	  </xs:complexType>
+  </xs:element>
+    
+  <xs:complexType name="vrtxPowerSensorInfo">
+   <xs:sequence>
+        <xs:element name="Sensor_Type" type="xs:string" minOccurs="0"/>
+        <xs:element name="Sensor_Name" type="xs:string" minOccurs="0"/>
+        <xs:element name="Status" type="xs:string" minOccurs="0"/>
+        <xs:element name="AC-OK_status" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="vrtxIntrusionSensorInfo">
+   <xs:sequence>
+        <xs:element name="Sensor_Type" type="xs:string" minOccurs="0"/>
+        <xs:element name="Sensor_Name" type="xs:string" minOccurs="0"/>
+        <xs:element name="Intrusion" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="m1000eSensorInfoBase">
+  	<xs:sequence>
+      <xs:element name="Num" type="xs:string" minOccurs="0"/>
+      <xs:element name="sensorName" type="xs:string" minOccurs="0"/>
+      <xs:element name="status" type="xs:string" minOccurs="0"/>
+      <xs:element name="reading" type="xs:string" minOccurs="0"/>
+  	</xs:sequence>
+  </xs:complexType>
+  
+  <xs:element name="m1000eSensorInfo">
+	  <xs:complexType>
+		  <xs:complexContent>
+			  <xs:extension base="m1000eSensorInfoBase">
+				   <xs:sequence>
+				        <xs:element name="senType" type="xs:string" minOccurs="0"/>
+				        <xs:element name="units" type="xs:string" minOccurs="0"/>
+				        <xs:element name="lc" type="xs:string" minOccurs="0"/>
+				        <xs:element name="uc" type="xs:string" minOccurs="0"/>
+				   </xs:sequence>
+			   </xs:extension>
+		   </xs:complexContent>
+	  </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="m1000eSensorInfoWithC">
+	<xs:complexType>
+		<xs:complexContent>
+			<xs:extension base="m1000eSensorInfoBase">
+			 <xs:sequence>
+			      <xs:element name="Sensor_Type" type="xs:string" minOccurs="0"/>
+			      <xs:element name="LC" type="xs:string" minOccurs="0"/>
+			      <xs:element name="UC" type="xs:string" minOccurs="0"/>
+			      <xs:element name="LW" type="xs:string" minOccurs="0"/>
+			      <xs:element name="UW" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+  </xs:element>
+  
+  <xs:complexType name="m1000ePowerSensorInfo">
+   <xs:sequence>
+        <xs:element name="senType" type="xs:string" minOccurs="0"/>
+        <xs:element name="Num" type="xs:string" minOccurs="0"/>
+        <xs:element name="status" type="xs:string" minOccurs="0"/>
+        <xs:element name="AC-OK_status" type="xs:string" minOccurs="0"/>        
+   </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="stompSensorInfo">
+   <xs:sequence>
+        <xs:element name="senType" type="xs:string" minOccurs="0"/>
+        <xs:element name="Sensor_Type" type="xs:string" minOccurs="0"/>
+        <xs:element name="Num" type="xs:string" minOccurs="0"/>
+        <xs:element name="sensorName" type="xs:string" minOccurs="0"/>
+        <xs:element name="status" type="xs:string" minOccurs="0"/>
+        <xs:element name="reading" type="xs:string" minOccurs="0"/>
+        <xs:element name="units" type="xs:string" minOccurs="0"/>
+        <xs:element name="LW" type="xs:string" minOccurs="0"/>
+        <xs:element name="UW" type="xs:string" minOccurs="0"/>
+        <xs:element name="LC" type="xs:string" minOccurs="0"/>
+        <xs:element name="UC" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="stompPowerSensorInfo">
+   <xs:sequence>
+        <xs:element name="senType" type="xs:string" minOccurs="0"/>
+        <xs:element name="Sensor_Type" type="xs:string" minOccurs="0"/>
+        <xs:element name="Num" type="xs:string" minOccurs="0"/>
+        <xs:element name="status" type="xs:string" minOccurs="0"/>
+        <xs:element name="AC-OK_status" type="xs:string" minOccurs="0"/>        
+   </xs:sequence>
+  </xs:complexType>
+
+    <!-- getFanOffset -->
+  <xs:complexType name="fanOffset">
+   <xs:sequence>
+        <xs:element name="Fan_offset" type="xs:string" minOccurs="0"/>       
+   </xs:sequence>
+  </xs:complexType>
+  
+    
+  <xs:complexType name="chassisActiveError">
+   <xs:sequence>
+        <xs:element name="Module_ID" type="xs:string" minOccurs="0"/>
+        <xs:element name="Severity" type="xs:string" minOccurs="0"/>
+        <xs:element name="Message" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+   <xs:complexType name="chassisLog">
+   <xs:sequence>
+        <xs:element name="SeqNumber" type="xs:string" minOccurs="0"/>
+        <xs:element name="Message_ID" type="xs:string" minOccurs="0"/>
+        <xs:element name="Category" type="xs:string" minOccurs="0"/>
+        <xs:element name="AgentID" type="xs:string" minOccurs="0"/>
+        <xs:element name="Severity" type="xs:string" minOccurs="0"/>
+        <xs:element name="Timestamp" type="xs:string" minOccurs="0"/>
+        <xs:element name="Message" type="xs:string" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  
+  <!-- racadm getconfig -g cfgThermal        enhancedCoolingMode -->
+  <xs:complexType name="enhancedCoolingMode">
+   <xs:sequence>
+        <xs:element name="cfgThermalEnhancedCoolingMode" type="xs:string" minOccurs="0"/>       
+   </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="licenseViewInfo">
+   <xs:sequence>
+        <xs:element name="Device_Name" type="xs:string" minOccurs="0"/>
+        <xs:element name="Status" type="xs:string" minOccurs="0"/>
+        <xs:element name="Device" type="xs:string" minOccurs="0"/>
+        <xs:element name="Device_Description" type="xs:string" minOccurs="0"/>
+        <xs:element name="Unique_Identifier" type="xs:string" minOccurs="0"/>
+        <xs:element name="LicenseViewDetails" type="LicenseViewDetails" maxOccurs="unbounded" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="LicenseViewDetails">
+   <xs:sequence>
+        <xs:element name="Name" type="xs:string" minOccurs="0"/>
+        <xs:element name="Status" type="xs:string" minOccurs="0"/>
+        <xs:element name="Transaction_ID" type="xs:string" minOccurs="0"/>
+        <xs:element name="License_Description" type="xs:string" minOccurs="0"/>
+        <xs:element name="License_Type" type="xs:string" minOccurs="0"/>
+        <xs:element name="Entitlement_ID" type="xs:string" minOccurs="0"/>
+        <xs:element name="License_Bound" type="xs:string" minOccurs="0"/>
+        <xs:element name="Expiration" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+</xs:schema>

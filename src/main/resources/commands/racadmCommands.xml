@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<commands>
+	<data>
+		<!-- output contains '=' character -->
+		<!-- Example: getpminfo
+		[Real-Time Power Statistics]
+		System Input Power                              = 1252 W (4272 BTU/h)
+		Peak System Power                               = 1284 W (4381 BTU/h)
+		Peak System Power Start Time                    = 05:02:10 11/28/2011
+		Peak System Power Timestamp                     = 21:10:21 12/07/2011
+		Minimum System Power                            = 103 W (351 BTU/h)
+		Minimum System Power Start Time                 = 05:02:10 11/28/2011
+		Minimum System Power Timestamp                  = 05:17:56 11/28/2011
+		System Idle Power                               = 1252 W (4272 BTU/h)
+		System Potential Power                          = 2153 W (7346 BTU/h)
+		System Input Current Reading                    = 6.2 A
+		-->
+		<command>getpminfo</command>
+	</data>
+	<dataintosingleentry>
+		<!-- same as data but format into a single entity -->
+		<command>getconfig -g cfgkvminfo</command>
+		<command>raid get controllers -o</command>
+		<command>raid get enclosures -o</command>
+		<command>raid get pdisks -o</command>
+		<command>raid get vdisks -o</command>
+		<command>getpbinfo -metadata=includeallbefore=Chassis_Power_Supply_Status_Table</command>
+		<command>getsysinfo</command>
+		<command>getniccfg</command>
+		<command>getconfig</command> <!-- getconfig -g cfgSessionManagement -m server-1 -->
+		<command>getactiveerrors</command>
+		<command>getconfig -g cfgThermal</command>
+		<command>getraclog</command>
+	</dataintosingleentry>
+	<dataintosingleentrywithfinalstatusmessage>
+		<!-- Output contains '=', expects only one entity, and may have a final status message
+		Example: $ racadm getarraycfg -m server-9
+		
+		Server-9: Array Configured Properties:
+		
+		Member Name                      = Colossus1
+		Member IP                        = 172.16.40.11
+		Group Name                       = Group1
+		Group IP                         = 172.16.40.10
+		Fabric Selection                 = B
+		Storage Server-9 configuration completed successfully.
+		-->		
+		<command>getarraycfg</command>	
+	</dataintosingleentrywithfinalstatusmessage>
+	<!--
+	Output contains '-' character
+	$ racadm fanoffset
+    Fan offset - off
+    -->
+	<datawithdashintosingleentry>
+	   <command>fanoffset</command>
+	</datawithdashintosingleentry>
+	<datanoequalsign>
+		<!-- output contains '=' character -->
+		<!-- Example: getpciecfg -c
+		[Real-Time Power Statistics]
+		System Input Power                              1252 W (4272 BTU/h)
+		Peak System Power                               1284 W (4381 BTU/h)
+		Peak System Power Start Time                    05:02:10 11/28/2011
+		-->
+		<command>getpciecfg -c</command>
+	</datanoequalsign>
+	<info>
+		<!-- output does NOT contain TAB characters -->
+		<!-- Example: getioinfo
+		<IO>      <Name>                         <Type>             <Presence>   <POST>       <Power>     <Role>
+		Switch-1  Dell PowerConnect M6220        Gigabit Ethernet   Present      OK           ON          Master
+		Switch-2  N/A                            None               Not Present  N/A          N/A         N/A
+		-->
+		<command>getpciecfg</command>
+		<command>getdcinfo</command>
+		<command>getfanreqinfo</command>
+		<command>getioinfo</command>
+		<command>getkvminfo</command>
+		<command>getmacaddress</command>
+		<command>getled</command> <!-- getled -m server-1 -->
+		<command>getsensorinfo</command>
+		
+	</info>
+	<table>
+		<!-- output contains TAB characters -->
+		<!-- Example: getflexaddr
+		<Slot#>         <Status>                <Server Presence>
+		1               Disabled                Present
+		2               Enabled                 Present
+		3               Enabled                 Present
+		4               Enabled                 Present
+		5               Disabled                Present
+		-->
+	    <command>getpbinfo -metadata=excludeallbefore=Server_Module_Power_Allocation_Table</command>
+		<command>getflexaddr</command>
+		<command>getversion</command>
+		<command>getmodinfo</command>
+	</table>
+	<tablespecialcaseforpowersupplies>
+		<!-- output contains TAB characters -->
+		<!-- Example: getflexaddr
+		<Slot#>         <Status>                <Server Presence>
+		1               Disabled                Present
+		2               Enabled                 Present
+		3               Enabled                 Present
+		4               Enabled                 Present
+		5               Disabled                Present
+		-->
+		<command>getpbinfo -metadata=excludeallbefore=Chassis_Power_Supply_Status_Table</command>
+	</tablespecialcaseforpowersupplies>
+	
+	<line>
+		<!-- output contains strings in a line  -->
+		<!-- example: getassetTag -->
+		<command>getassettag</command>
+		<command>setassettag</command>
+		<command>config</command>
+		<command>setchassisname</command>
+		<command>setsysinfo</command>
+		<command>setractime</command>
+		<command>setniccfg</command>
+		<command>deploy</command>
+		<command>getractime</command>
+		<command>fwupdate</command>
+		<command>racreset</command>
+		<command>sslcertupload</command>
+		<command>getredundancymode</command>
+		<command>serveraction</command>
+	</line>
+	<licensespecific>
+	   <command>license view</command>
+	</licensespecific>
+
+</commands>
