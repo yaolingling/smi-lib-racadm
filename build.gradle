@@ -90,8 +90,7 @@ dependencies {
 	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '+'
     compile group: 'commons-io', name: 'commons-io', version: '2.5'
-	//compile group: 'wiseman', name: 'wiseman', version: '2.0'
-	compile files('src/main/lib/wiseman.jar')
+    compile files('src/main/lib/wisemen-1.0.0.jar')
 	jaxb 'com.sun.xml.bind:jaxb-xjc:2.2.7-b41'
     jaxb 'com.sun.xml.bind:jaxb-impl:2.2.7-b41'
     jaxb 'javax.xml.bind:jaxb-api:2.2.7'
@@ -136,7 +135,7 @@ uploadArchives {
 				artifactId = "racadmlib"
 				packaging 'jar'
 				url 'https://www.github.com/rackhd/smi-lib-racadm'
-				name 'SMI wsman LIB'
+				name 'SMI Racadm LIB'
 				description 'RACADM jar library for the System Management Integration (SMI) projects.'
 				inceptionYear '2017'
 				
