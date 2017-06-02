@@ -25,7 +25,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.dell.isg.smi.commons.elm.utilities.xml.XmlHelper;
+import com.dell.isg.smi.commons.utilities.xml.XmlHelper;
 import com.dell.isg.smi.common.protocol.command.cmc.entity.RacadmCredentials;
 import com.dell.isg.smi.common.protocol.racadm.RacadmCommandHelper;
 

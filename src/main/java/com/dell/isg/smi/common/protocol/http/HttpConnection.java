@@ -43,7 +43,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.dell.isg.smi.commons.elm.exception.RuntimeCoreException;
-import com.dell.isg.smi.commons.elm.utilities.StreamUtils;
+import com.dell.isg.smi.commons.utilities.stream.StreamUtils;
 import com.sun.ws.management.Management;
 import com.sun.ws.management.addressing.Addressing;
 

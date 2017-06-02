@@ -28,7 +28,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.dell.isg.smi.commons.elm.utilities.xml.XmlHelper;
+import com.dell.isg.smi.commons.utilities.xml.XmlHelper;
 import com.dell.isg.smi.common.protocol.util.ExceptionUtilities;
 
 /**
