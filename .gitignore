@@ -69,3 +69,6 @@ src/main/java/com/dell/isg/smi/common/protocol/command/chassis/entity/VrtxPowerS
 src/main/java/com/dell/isg/smi/common/protocol/command/chassis/entity/VrtxSensorInfo.java
 src/main/java/com/dell/isg/smi/common/protocol/command/chassis/entity/VrtxSensorInfoBase.java
 src/main/java/com/dell/isg/smi/common/protocol/command/chassis/entity/VrtxSensorInfoWithC.java
+.gradle/
+.classpath
+.settings/
