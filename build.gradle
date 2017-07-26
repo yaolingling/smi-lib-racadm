@@ -2,9 +2,9 @@ apply plugin: 'com.github.jacobono.jaxb'
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.sonarqube'
-apply plugin: "com.github.hierynomus.license"
+apply plugin: 'com.github.hierynomus.license'
 apply plugin: 'maven-publish'
-apply plugin: "com.jfrog.artifactory"
+apply plugin: 'com.jfrog.artifactory'
 apply plugin: 'signing'
 apply plugin: 'maven'
 //apply plugin: 'nebula.lint'
@@ -39,14 +39,14 @@ buildscript {
 
 sonarqube {
     properties {
-        property "sonar.projectName", "SMI :: Library :: Racadm"
-        property "sonar.projectKey", "org.sonarqube:racadmlib"
+        property "sonar.projectName", "rackhd :: smi-lib-racadm"
+        property "sonar.projectKey", "${group}:racadmlib"
     }
 }
 
 jar {
     manifest {
-        attributes 'Implementation-Title': 'Dell racadmlib jar',
+        attributes 'Implementation-Title': 'Dell RacAdm jar',
                    'Implementation-Version': version
     }
 }
@@ -73,28 +73,25 @@ task javadocJar(type: Jar) {
     from javadoc
 }
 
-artifacts {
-    archives javadocJar, sourcesJar
-}
 
 repositories {
 	mavenLocal()
-	maven {
-		url "${artifactory_contextUrl}/${dependency_repo}"
-	}
+	maven { url "${artifactory_contextUrl}/libs-snapshot" }
+	maven { url "${artifactory_contextUrl}/libs-release" }
+	maven { url "https://repo.maven.apache.org/maven2" }
 }
 
 dependencies {
-	compile 'com.dell.isg.smi:commons-elm:1.0.76'
-	compile 'com.dell.isg.smi:commons-utilities:1.0.26'
-	compile 'wiseman:wiseman:2.0'
-	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: '+'
-    compile group: 'commons-io', name: 'commons-io', version: '2.5'
-	jaxb 'com.sun.xml.bind:jaxb-xjc:2.2.7-b41'
-    jaxb 'com.sun.xml.bind:jaxb-impl:2.2.7-b41'
-    jaxb 'javax.xml.bind:jaxb-api:2.2.7'
-    jaxb "org.jvnet.jaxb2_commons:jaxb2-basics-ant:0.6.5"
+        compile 'com.dell.isg.smi:commons-elm:1.0.76'
+        compile 'com.dell.isg.smi:commons-utilities:1.0.32'
+        compile 'com.dell.isg.smi:wiseman:1.0.5'
+        compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+        compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
+        compile group: 'commons-io', name: 'commons-io', version: '2.5'
+        jaxb 'com.sun.xml.bind:jaxb-xjc:2.2.7-b41'
+        jaxb 'com.sun.xml.bind:jaxb-impl:2.2.7-b41'
+        jaxb 'javax.xml.bind:jaxb-api:2.2.7'
+        jaxb "org.jvnet.jaxb2_commons:jaxb2-basics-ant:0.6.5"
   	jaxb "org.jvnet.jaxb2_commons:jaxb2-basics:0.6.4"
   	jaxb "org.jvnet.jaxb2_commons:jaxb2-basics-annotate:0.6.4"
 }
@@ -121,22 +118,22 @@ uploadArchives {
        }
        mavenDeployer
 	   {
-			beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+		beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 			
-			repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-				authentication(userName: ossrhUsername, password: ossrhPassword)
-			}
+		repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+			authentication(userName: ossrhUsername, password: ossrhPassword)
+		}
 
-			snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-				authentication(userName: ossrhUsername, password: ossrhPassword)
-			}
+		snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+			authentication(userName: ossrhUsername, password: ossrhPassword)
+		}
 	  
 	        pom.project {
 				artifactId = "racadmlib"
 				packaging 'jar'
 				url 'https://www.github.com/rackhd/smi-lib-racadm'
-				name 'SMI Racadm LIB'
-				description 'RACADM jar library for the System Management Integration (SMI) projects.'
+				name 'SMI RacAdm Library'
+				description 'A Jar library with implementation logic for interfacing with Dell Systems using the RacAdm protocol/endpont.'
 				inceptionYear '2017'
 				
 				licenses {
@@ -166,6 +163,10 @@ uploadArchives {
 			}
 		}
     }
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
 }
 
 signing {
