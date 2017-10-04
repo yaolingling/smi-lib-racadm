@@ -33,6 +33,8 @@ import javax.net.ssl.SSLSocket;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.NotAuthorizedException;
 import javax.xml.bind.JAXBException;
 import javax.xml.soap.SOAPException;
 import javax.xml.ws.http.HTTPException;
@@ -468,7 +470,6 @@ public class HttpConnection {
                 sOutput = result.toString();
                 checkResponse();
                 reply = sOutput;
-                connection.disconnect();
                 break;
             } catch (SSLHandshakeException she) {
                 logger.debug("Caught ssl handshake expression" + she.getMessage());
@@ -479,11 +480,15 @@ public class HttpConnection {
                 int rc = this.checkResponse();
                 if (rc == HttpURLConnection.HTTP_UNAUTHORIZED) {
                     logger.error(ioe.getMessage());
-                    throw new RuntimeCoreException(210050);
+                    throw new NotAuthorizedException(ioe);
+                }
+                if (rc == HttpURLConnection.HTTP_BAD_REQUEST) {
+                    logger.error(ioe.getMessage());
+                    throw new BadRequestException(ioe);
                 }
                 if (System.currentTimeMillis() > connectionTimeoutTime) {
                     logger.error(ioe.getMessage());
-                    throw new RuntimeCoreException(210050);
+                    throw ioe;
                 }
                 try {
                     Thread.sleep(2000);
@@ -491,6 +496,7 @@ public class HttpConnection {
                     logger.error(e.getMessage());
                 }
             } finally {
+                connection.disconnect();
                 IOUtils.closeQuietly(in);
                 IOUtils.closeQuietly(writer);
             }
