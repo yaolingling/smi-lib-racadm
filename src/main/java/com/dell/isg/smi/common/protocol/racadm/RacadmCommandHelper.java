@@ -15,6 +15,7 @@ import java.util.regex.Pattern;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSession;
+import javax.ws.rs.NotAuthorizedException;
 import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
@@ -141,7 +142,7 @@ public class RacadmCommandHelper {
         }
         if (rc != 0 || sid == null) {
             logger.error("Failed to get session ID. Please check login/pwd. Response = " + response);
-            ExceptionUtilities.handleRuntimeCoreException(200501);
+            throw new NotAuthorizedException(response);
         }
         return sid;
     }
