@@ -142,7 +142,6 @@ public class RacadmCommandHelper {
         }
         if (rc != 0 || sid == null) {
             logger.error("Failed to get session ID. Please check login/pwd. Response = " + response);
-            //ExceptionUtilities.handleRuntimeCoreException(200501);
             throw new NotAuthorizedException(response);
         }
         return sid;
